@@ -54,7 +54,12 @@ app.post('/completed', (request, response) => {
 app.post('/deliver', (request, response, callerName) => {
 
 	const twiml = new VoiceResponse();
-	const accomplishment = request.body.SpeechResult;
+	let accomplishment = request.body.SpeechResult;
+
+	if (accomplishment) {
+		const regex = /I /i;
+		accomplishment = accomplishment.replace(regex, '');
+	}
 
 	twiml.play('https://files.mattbutterfield.com/celebration.mp3');
 
@@ -76,7 +81,7 @@ app.post('/gather', (request, response) => {
 	if (request.body.Digits) {
 		switch (request.body.Digits) {
 			case '1': 
-				twiml.say({voice: 'Polly.Amy'}, `Ok, one more time! You did it! Woooooo!`);
+				twiml.say({voice: 'Polly.Amy'}, `Well alright, one more time! You really did it! Woooooo!`);
 	        	break;
 		    case '2':
 		   		twiml.say({voice: 'Polly.Amy'},`Goodbye!`);
@@ -93,4 +98,8 @@ app.post('/gather', (request, response) => {
 
 //render the response as XML in reply to the webhook request -- is this the right place for this? 
 console.log('Twilio client app http server running at http://127.0.0.1:3000');
-app.listen(3000);
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
