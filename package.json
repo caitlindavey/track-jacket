@@ -1,0 +1,26 @@
+{
+  "name": "track-jacket",
+  "version": "1.0.0",
+  "description": "This is my track jacket app that explores the Twilio voice docs. ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caitlindavey/track-jacket.git"
+  },
+  "author": "Caitlin Davey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caitlindavey/track-jacket/issues"
+  },
+  "engines": {
+    "node": "16.2.0"
+  }
+  "homepage": "https://github.com/caitlindavey/track-jacket#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "twilio": "^3.63.1"
+  }
+}
